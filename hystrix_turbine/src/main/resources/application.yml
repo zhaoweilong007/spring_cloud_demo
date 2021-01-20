@@ -1,0 +1,18 @@
+server:
+  port: 8900
+spring:
+  application:
+    name: hsytrix-turbine
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:9800/eureka,http://localhost:8000/eureka
+
+turbine:
+  #要监视的服务器列表
+  app-config: product-server,order-server
+  cluster-name-expression: "'default'"

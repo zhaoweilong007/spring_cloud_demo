@@ -1,0 +1,21 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: sentinel-server
+  cloud:
+    sentinel:
+      enabled: true
+      eager: true
+      transport:
+        dashboard: localhost:8858
+    loadbalancer:
+      retry:
+        enabled: true
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}
+  client:
+    service-url:
+      defaultZone: http://localhost:9800/eureka,http://localhost:8000/eureka

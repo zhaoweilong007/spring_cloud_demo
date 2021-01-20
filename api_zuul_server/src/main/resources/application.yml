@@ -1,0 +1,22 @@
+server:
+  port: 8900
+spring:
+  application:
+    name: api_zuul_server
+zuul:
+  routes:
+    #路由配置
+    # 当前服务id和微服务名称一致 默认的请求映射微服务名称/**
+    order-server: /order-server/**
+#    order-server:
+#      path: /order-server/**
+      # 自动从eureka获取ip
+#      serviceId: order-server
+      #      url: http://localhost:9001
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:9800/eureka,http://localhost:8000/eureka

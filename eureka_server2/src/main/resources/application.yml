@@ -1,0 +1,23 @@
+server:
+  port: 9800
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    #是否将自己注册到注册中心
+    #    register-with-eureka: false
+    #是否从eureka获取注册信息
+    #    fetch-registry: false
+    #配置暴露给Eureka client的请求地址
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8000/eureka
+spring:
+  application:
+    name: eureka-server
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false

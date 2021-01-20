@@ -1,0 +1,19 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: stream_consumer
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          name-server: 192.168.31.25:9876
+        bindings:
+          input:
+            consumer:
+              tags: mytopic
+      bindings:
+        input:
+          group: groupA
+          destination: mytopic
+          binder: rocketmq
